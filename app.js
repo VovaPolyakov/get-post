@@ -31,6 +31,9 @@ app.get('/', (req, res) => {
 
 
 app.post('/', urlencodedParser, function (req, res) {
+    
+    console.log(req.body.where)
+    console.log(req.body.time)
     if (!req.body) return res.sendStatus(400);
     const adults = tickets.filter((item) =>{
         if( req.body.where == item.country && req.body.time <= item.time){
