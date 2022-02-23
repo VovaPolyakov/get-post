@@ -27,7 +27,13 @@ app.get('/', (req, res) => {
 
 
 });
-
+app.post('/info',  urlencodedParser, function (req, res) {
+    let info = document.querySelectorAll('.info');
+    for(let i = 0;i < tickets.length;i++){
+        res.render('alltur',{coun: tickets[i].country, time:tickets[i].time})
+        info[i].innerText = `${tickets[i].country}, ${tickets[i].time}`
+    }
+});
 
 
 app.post('/', urlencodedParser, function (req, res) {
