@@ -25,29 +25,26 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.render('main');
 
-
 });
-app.get('/info',  urlencodedParser, function (req, res) {
-    let info = document.querySelectorAll('.info');
-    for(let i = 0;i < tickets.length;i++){
-        res.render('alltur',{coun: tickets[i].country, time:tickets[i].time})
-        info[i].innerText = `${tickets[i].country}, ${tickets[i].time}`
-    }
-});
-
 app.get('/info', (req, res) => {
-    res.render('info');
-    let info = document.querySelectorAll('.info');
-    for(let i = 0;i < tickets.length;i++){
-        res.render('alltur',{coun: tickets[i].country, time:tickets[i].time})
-        info[i].innerText = `${tickets[i].country}, ${tickets[i].time}`
-    }
+    console.log("!!! Hello !!!");
 
+    function createInfo(coun){
+        res.render('info',{coun: coun,});
+    }
+    // for(let i = 0;i<tickets.length;i++){
+    //     createInfo(tickets[i].country,tickets[i].time)
+    // }
+    let inf = [];
+    for(let i = 0;i<tickets.length;i++){
+        inf.push(`${tickets[i].country},${tickets[i].time}`)
+        console.log(inf)
+    }
+    createInfo(inf)
 });
 
 
 app.post('/', urlencodedParser, function (req, res) {
-    
     console.log(req.body.where)
     console.log(req.body.time)
     if (!req.body) return res.sendStatus(400);
