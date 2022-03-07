@@ -26,22 +26,9 @@ app.get('/', (req, res) => {
     res.render('main');
 
 });
-app.get('/info', (req, res) => {
-    console.log("!!! Hello !!!");
-
-    function createInfo(coun){
-        res.render('info',{coun: coun,});
-    }
-    // for(let i = 0;i<tickets.length;i++){
-    //     createInfo(tickets[i].country,tickets[i].time)
-    // }
-    let inf = [];
-    for(let i = 0;i<tickets.length;i++){
-        inf.push(`${tickets[i].country},${tickets[i].time}`)
-        console.log(inf)
-    }
-    createInfo(inf)
-});
+app.get('/info',(req,res) => {
+    res.render('info',{data: tickets})
+})
 
 
 app.post('/', urlencodedParser, function (req, res) {
