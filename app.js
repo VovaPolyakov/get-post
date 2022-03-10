@@ -21,7 +21,9 @@ app.engine('hbs', handlebars({
     partialDir: `${__dirname}/views/partials`
 
 }));
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/views/css`));
+
+
 app.get('/', (req, res) => {
     res.render('main');
 
