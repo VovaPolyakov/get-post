@@ -1,0 +1,38 @@
+
+body{
+    background:rgb(230, 227, 227) ;
+}
+.info{
+    background: black;
+}
+
+table{
+    margin-left: 730px;
+    margin-top: 260px;
+    width: 430px;
+    font-family: sans-serif;
+    text-align:left ;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: white;
+    border: 1px solid rgba(105, 104, 104, 0.589);
+}
+tr{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(105, 104, 104, 0.589);
+}
+tr:last-child{
+    border: none;
+}
+td{
+    padding: 10px;
+}
+th{
+    font-size: 18px;
+    padding: 10px;
+}
+.table__time{
+    padding-right: 90px;
+}

@@ -11,8 +11,8 @@ const tickets = [
     {country: 'Germany', time: 12},
     {country: 'USA', time: 9},
     {country: 'Russia', time: 13},
-    {country: 'Canada', time: 17},
     {country: 'Japan', time: 24},
+    {country: 'Canada', time: 17},
 ];
 app.engine('hbs', handlebars({
     layoutsDir: `${__dirname}/views/layouts`,
@@ -21,16 +21,22 @@ app.engine('hbs', handlebars({
     partialDir: `${__dirname}/views/partials`
 
 }));
-app.use(express.static(`${__dirname}/views/css`));
 
+app.use(express.static(`${__dirname}/public`));
 
 app.get('/', (req, res) => {
     res.render('main');
 
 });
+
+
+
 app.get('/info',(req,res) => {
     res.render('info',{data: tickets})
 })
+
+
+
 
 
 app.post('/', urlencodedParser, function (req, res) {

@@ -1,9 +1,24 @@
 
 
-<div class="info">
+{{!-- <div class="info">
     {{#each data}}
         <p class="tur">{{this.country}}, {{this.time}}</p>
     {{/each}}
 
-</div>
+</div> --}}
+
+<table>
+    <tr>
+        <th>Страна полёта</th>
+        <th class="time">Время начала посадки</th>
+    </tr>
+    
+        {{#each data}}
+        <tr>
+            <td class="table__country">{{this.country}}</td>
+            <td class="table__time">{{this.time}}</td>
+        </tr>
+        {{/each}}
+</table>
+
 
