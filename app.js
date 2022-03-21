@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
+var mainJs = require('./public/js/main')
 const path = require('path');
 const port = 3000;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -13,6 +14,7 @@ const tickets = [
     {country: 'Russia', time: 13},
     {country: 'Japan', time: 24},
     {country: 'Canada', time: 17},
+    
 ];
 app.engine('hbs', handlebars({
     layoutsDir: `${__dirname}/views/layouts`,
@@ -38,7 +40,6 @@ app.get('/info',(req,res) => {
 
 
 
-
 app.post('/', urlencodedParser, function (req, res) {
     console.log(req.body.where)
     console.log(req.body.time)
@@ -59,6 +60,5 @@ app.post('/', urlencodedParser, function (req, res) {
         res.render('error',{error:error})
     }
 });
-
 
 app.listen(port, () => console.log(`App listening to port ${port}`));

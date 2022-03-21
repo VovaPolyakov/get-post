@@ -16,10 +16,12 @@ time.addEventListener('click',function(event){
                     const array = tickets[i]
                     tickets[i] = tickets[i+1]
                     tickets[i+1] = array
+                    console.log(array[i])
                 }
             }
         }
     }
+
     for(let i =0;i < tickets.length;i++){
         let adults = tickets.filter(ticket =>{
             if(ticket.time == array[i]){
