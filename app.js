@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
-var mainJs = require('./public/js/main')
 const path = require('path');
 const port = 3000;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });

@@ -7,8 +7,8 @@ body{
 }
 
 table{
-    margin-left: 730px;
-    margin-top: 260px;
+    margin: 0 auto ;
+    margin-top: 300px;
     width: 430px;
     font-family: sans-serif;
     text-align:left ;
