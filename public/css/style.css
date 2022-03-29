@@ -32,6 +32,7 @@ td{
 th{
     font-size: 18px;
     padding: 10px;
+    cursor: pointer;
 }
 .table__time{
     padding-right: 90px;
