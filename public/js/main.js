@@ -1,4 +1,5 @@
 let time = document.querySelector('.time');
+let country = document.querySelector('.country')
 let tableTime = document.querySelectorAll('.table__time');
 let tableCountry = document.querySelectorAll('.table__country');
 
@@ -12,6 +13,55 @@ const tickets = [
     {country: 'Canada', time: 17},
     
 ];
+
+country.addEventListener('click',function(event){
+    if(event.target.classList.contains('no_sort')){
+        alphabet();
+        country.classList.remove('no_sort')
+        country.classList.add('aligned')
+    }else if(event.target.classList.contains('aligned')){
+        notAlphabet();
+        country.classList.remove('aligned')
+        country.classList.add('no_sort')
+    }
+    function alphabet(){
+        let count = [];
+        for(let i =0;i<tableCountry.length;i++){
+            count.push(tableCountry[i].innerText);
+        }
+        count.sort();
+        for(let i = 0;i< count.length;i++){
+            let adults = tickets.filter(ticket =>{
+                if(ticket.country == count[i]){
+                    return true
+                }
+            })
+            for(let n = 0;n< adults.length;n++){
+                tableTime[i].innerText = adults[n].time;
+                tableCountry[i].innerText = adults[n].country;   
+            }
+        }
+    }
+    function notAlphabet(){
+        let count = [];
+        for(let i =0;i<tableCountry.length;i++){
+            count.push(tableCountry[i].innerText);
+        }
+        count.sort();
+        count.reverse();
+        for(let i = 0;i< count.length;i++){
+            let adults = tickets.filter(ticket =>{
+                if(ticket.country == count[i]){
+                    return true
+                }
+            })
+            for(let n = 0;n< adults.length;n++){
+                tableTime[i].innerText = adults[n].time;
+                tableCountry[i].innerText = adults[n].country;   
+            }
+        }
+    }
+})
 
 time.addEventListener('click',function(event){
     if(event.target.classList.contains('no_sort')){
