@@ -2,6 +2,8 @@ let time = document.querySelector('.time');
 let country = document.querySelector('.country')
 let tableTime = document.querySelectorAll('.table__time');
 let tableCountry = document.querySelectorAll('.table__country');
+let icon = document.querySelector('.material-icons-outlined');
+icon.style.display = 'none'
 
 
 
@@ -68,14 +70,18 @@ time.addEventListener('click',function(event){
         sortingIncrease();
         time.classList.remove('no_sort')
         time.classList.add('increase')
+        icon.style.display = 'block'
     }else if(event.target.classList.contains('increase')){
         sortingDescending()
         time.classList.remove('increase')
         time.classList.add('descending')
+        icon.style.display = 'block'
+        icon.innerText = 'expand_less'
     }else if(event.target.classList.contains('descending')){
         sortingIncrease();
         time.classList.remove('descending')
         time.classList.add('increase')
+        icon.innerText = 'expand_more'
     }
 
     console.log(event.target)

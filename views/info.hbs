@@ -6,13 +6,13 @@
     {{/each}}
 
 </div> --}}
-
 <table>
-    <tr>
+    <tr class="top"> 
         <th class="country no_sort">Страна полёта</th>
-        <th class="time no_sort">Время начала посадки</th>
+        <th class="time no_sort">Время начала посадки
+            <span id="name-icon" class="material-icons-outlined">expand_more</span>
+        </th>
     </tr>
-    
         {{#each data}}
         <tr>
             <td class="table__country">{{this.country}}</td>
