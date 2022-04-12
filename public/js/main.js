@@ -2,10 +2,8 @@ let time = document.querySelector('.time');
 let country = document.querySelector('.country')
 let tableTime = document.querySelectorAll('.table__time');
 let tableCountry = document.querySelectorAll('.table__country');
-let icon = document.querySelector('.material-icons-outlined');
-icon.style.display = 'none'
-
-
+let icon = document.querySelector('.first');
+let iconSecond = document.querySelector('#name-icon')
 
 const tickets = [
     {country: 'Germany', time: 12},
@@ -17,14 +15,27 @@ const tickets = [
 ];
 
 country.addEventListener('click',function(event){
+    icon.style.opacity ='0'
     if(event.target.classList.contains('no_sort')){
         alphabet();
         country.classList.remove('no_sort')
         country.classList.add('aligned')
+        iconSecond.style.opacity = '1'
     }else if(event.target.classList.contains('aligned')){
         notAlphabet();
         country.classList.remove('aligned')
-        country.classList.add('no_sort')
+        country.classList.add('notAlphabetically')
+        iconSecond.style.opacity = '1'
+        iconSecond.innerText = 'expand_less'
+
+    }
+    else if(event.target.classList.contains('notAlphabetically')){
+        alphabet();
+        country.classList.remove('notAlphabetically')
+        country.classList.add('aligned')
+        iconSecond.style.opacity = '1'
+        iconSecond.innerText = 'expand_more'
+
     }
     function alphabet(){
         let count = [];
@@ -66,21 +77,23 @@ country.addEventListener('click',function(event){
 })
 
 time.addEventListener('click',function(event){
+    iconSecond.style.opacity ='0'
     if(event.target.classList.contains('no_sort')){
         sortingIncrease();
         time.classList.remove('no_sort')
         time.classList.add('increase')
-        icon.style.display = 'block'
+        icon.style.opacity = '1'
     }else if(event.target.classList.contains('increase')){
         sortingDescending()
         time.classList.remove('increase')
         time.classList.add('descending')
-        icon.style.display = 'block'
+        icon.style.opacity = '1'
         icon.innerText = 'expand_less'
     }else if(event.target.classList.contains('descending')){
         sortingIncrease();
         time.classList.remove('descending')
         time.classList.add('increase')
+        icon.style.opacity = '1'
         icon.innerText = 'expand_more'
     }
 

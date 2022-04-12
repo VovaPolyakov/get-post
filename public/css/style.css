@@ -22,6 +22,12 @@ table{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
+}
+.country{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 tr{
     display: flex;
@@ -44,4 +50,12 @@ th{
 }
 .table__time{
     padding-right: 90px;
+}
+
+.material-icons-outlined{
+    opacity: 0;
+}
+
+#name-icon{
+    opacity: 0;
 }
