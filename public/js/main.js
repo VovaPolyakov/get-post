@@ -6,11 +6,11 @@ let icon = document.querySelector('.first');
 let iconSecond = document.querySelector('#name-icon')
 
 const tickets = [
-    {country: 'Germany', time: 12},
-    {country: 'USA', time: 9},
-    {country: 'Russia', time: 13},
-    {country: 'Japan', time: 24},
-    {country: 'Canada', time: 17},
+    {country: 'Germany', time: '2022-04-04'},
+    {country: 'USA', time: '2022-04-20'},
+    {country: 'Russia', time: '2022-05-12'},
+    {country: 'Japan', time: '2022-03-19'},
+    {country: 'Canada', time: '2022-04-22'},
     
 ];
 
@@ -49,10 +49,10 @@ country.addEventListener('click',function(event){
                     return true
                 }
             })
-            for(let n = 0;n< adults.length;n++){
-                tableTime[i].innerText = adults[n].time;
-                tableCountry[i].innerText = adults[n].country;   
-            }
+            adults.forEach(elem => {
+                tableTime[i].innerText = elem.time;
+                tableCountry[i].innerText = elem.country;  
+            });
         }
     }
     function notAlphabet(){
@@ -68,9 +68,11 @@ country.addEventListener('click',function(event){
                     return true
                 }
             })
+            adults.forEach(elem => {
+                tableTime[i].innerText = elem.time;
+                tableCountry[i].innerText = elem.country;   
+            });
             for(let n = 0;n< adults.length;n++){
-                tableTime[i].innerText = adults[n].time;
-                tableCountry[i].innerText = adults[n].country;   
             }
         }
     }
@@ -101,9 +103,10 @@ time.addEventListener('click',function(event){
     function sortingIncrease(){
 
         let array =[];
-        for(let i = 0;i<tickets.length;i++){
-            array.push(tickets[i].time)
-        }
+        tickets.forEach(ticket => {
+            array.push(ticket.time)
+        });
+
         sorting(array)
 
     
@@ -124,19 +127,21 @@ time.addEventListener('click',function(event){
                     return true
                 }
             })
-            for(let n = 0;n< adults.length;n++){
-                tableTime[i].innerText = adults[n].time;
-                tableCountry[i].innerText = adults[n].country;   
-            }
+            adults.forEach(elem => {
+                tableTime[i].innerText = elem.time;
+                tableCountry[i].innerText = elem.country;   
+            });
+
         }
     }
     function sortingDescending(){
         let array =[];
         for(let i = 0;i<tickets.length;i++){
-            array.push(tickets[i].time)
+            array.push(tableTime[i].innerText)
         }
     
-        array.sort((a, b) => b - a);
+        array.reverse()
+        
 
         for(let i = 0;i< array.length;i++){
             let adults = tickets.filter(ticket =>{

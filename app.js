@@ -8,11 +8,11 @@ const handlebars = require('express-handlebars');
 app.set('view engine', 'hbs');
 
 const tickets = [
-    {country: 'Germany', time: 12},
-    {country: 'USA', time: 9},
-    {country: 'Russia', time: 13},
-    {country: 'Japan', time: 24},
-    {country: 'Canada', time: 17},
+    {country: 'Germany', time: '2022-04-04'},
+    {country: 'USA', time: '2022-04-20'},
+    {country: 'Russia', time: '2022-05-12'},
+    {country: 'Japan', time: '2022-03-19'},
+    {country: 'Canada', time: '2022-04-22'},
     
 ];
 app.engine('hbs', handlebars({
@@ -32,19 +32,16 @@ app.get('/', (req, res) => {
 
 
 
+
+
 app.get('/info',(req,res) => {
     res.render('info',{data: tickets})
 })
 
-
-
-
 app.post('/', urlencodedParser, function (req, res) {
-    console.log(req.body.where)
-    console.log(req.body.time)
     if (!req.body) return res.sendStatus(400);
     const adults = tickets.filter((item) =>{
-        if( req.body.where == item.country && req.body.time <= item.time){
+        if( req.body.where == item.country && req.body.time == item.time){
             return true
         }
         return false

@@ -6,6 +6,19 @@ body{
 .info{
     background: black;
 }
+.tur{
+    margin:0 auto;
+    margin-top: 300px;
+    border: 1px solid black;
+    padding: 20px;
+    width: 300px;
+}
+.tur p{
+    margin: 0;
+    width: 270px;
+    margin: 0 auto;
+}
+
 
 table{
     margin: 0 auto ;
