@@ -1,5 +1,6 @@
 <table>
-    <tr class="top"> 
+    <tr class="top">
+        <th class="tur__id">ID</th>
         <th class="country no_sort">Страна полёта
             <span id="name-icon" class="material-icons-outlined">expand_more</span>
         </th>
@@ -7,12 +8,11 @@
             <span class="material-icons-outlined first">expand_more</span>
         </th>
     </tr>
-        {{#each data}}
+    {{#each tur}}
         <tr>
+            <td class="table__id">{{this.id}}</td>
             <td class="table__country">{{this.country}}</td>
             <td class="table__time">{{this.time}}</td>
         </tr>
-        {{/each}}
+    {{/each}}
 </table>
-
-

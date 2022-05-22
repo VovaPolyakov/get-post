@@ -59,21 +59,41 @@ const getUsers = (request, response) => {
     if (error) {
       console.log(error)
     }
-    response.status(200).json(results.rows)
+    console.log(results.rows[4].country)
+    console.log(results.rows[4].time)
+    response.render('turs',{tur: results.rows});
     console.log(results.rows)
+    })
+}
+
+
+const createUser = (request, response) => {
+  console.log(request.body)
+  const name = request.body.where
+  const time = request.body.time
+
+  pool.query('INSERT INTO turs (country, time) VALUES ($1, $2)', [name, time], (error, results) => {
+    if (error) {
+      console.log(error)
+    }
+    response.render('createTurs');
+    console.log(results)
   })
 }
 
 
 
 
-
 module.exports = {
   getUsers,
+  createUser,
 }   
 
 
+
 app.get('/turs',getUsers);
+
+app.get('/createTurs',createUser)
 
 
 app.get('/info',(req,res) => {

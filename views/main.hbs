@@ -6,7 +6,7 @@
 </form> --}}
 
 <div class="container" style="width: 1000px; margin: 0 auto">
-    <div style="width: 400px; height:400px; margin: 0 auto ;margin-top: 300px;" >
+    <div style="width: 500px; height:400px; margin: 0 auto ;margin-top: 300px;" >
         <form action="/" method="post">
             <div class="mb-3">
                 <label  class="form-label">Name of Country</label>
@@ -16,9 +16,15 @@
                 <label for="exampleInputPassword1" class="form-label" >Time</label>
                 <input placeholder="Select Dateime" name="time" class="form-control" type="datetime-local" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="button">
+                <button type="submit"  class="btn btn-primary">Submit</button>
+                <div  class="info_bt">
+                    <button class="info__btn"><a type="submit" href="/info">Посмотреть рейсы</a></button>
+                    <button class="info__btn"><a type="submit"  href="/turs">Рейсы в базе данных</a></button>
+                </div>
+            </div>
+            <button class="info__btn"><a type="submit"  href="/createTurs">Создать тур</a></button>
         </form>
-        <a type="submit" href="/info">Посмотреть рейсы</a>
     </div>
 </div>
 
