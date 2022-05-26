@@ -67,7 +67,8 @@ const getUsers = (request, response) => {
 }
 
 
-const createUser = (request, response) => {
+
+const createTrip = (request, response) => {
   console.log(request.body)
   const name = request.body.where
   const time = request.body.time
@@ -76,8 +77,7 @@ const createUser = (request, response) => {
     if (error) {
       console.log(error)
     }
-    response.render('createTurs');
-    console.log(results)
+    response.redirect('/newTripForm');
   })
 }
 
@@ -86,14 +86,21 @@ const createUser = (request, response) => {
 
 module.exports = {
   getUsers,
-  createUser,
+  createTrip,
 }   
+
+app.get('/newTripForm',(req,res)=>{
+  res.render('newTripForm');
+})
+
+
+app.post('/newTripForm',createTrip)
+
 
 
 
 app.get('/turs',getUsers);
 
-app.get('/createTurs',createUser)
 
 
 app.get('/info',(req,res) => {
