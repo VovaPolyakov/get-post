@@ -123,9 +123,18 @@ th{
     cursor: pointer;
 }
 .table__time{
-    padding-right: 90px;
 }
 
+.table__delete{
+    cursor: pointer;
+}
+.table__delete a{
+    text-decoration: none;
+    color: black;
+}
+.table__delete a:hover{
+    text-decoration: none;
+}
 .material-icons-outlined{
     opacity: 0;
 }

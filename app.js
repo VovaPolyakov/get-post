@@ -54,22 +54,18 @@ const pool = new Pool({
 
 
 
-const getUsers = (request, response) => {
+const getTrip = (request, response) => {
   pool.query('SELECT * FROM turs ORDER BY id ASC', (error, results) => {
     if (error) {
       console.log(error)
     }
-    console.log(results.rows[4].country)
-    console.log(results.rows[4].time)
     response.render('turs',{tur: results.rows});
-    console.log(results.rows)
     })
 }
 
 
 
 const createTrip = (request, response) => {
-  console.log(request.body)
   const name = request.body.where
   const time = request.body.time
 
@@ -81,12 +77,25 @@ const createTrip = (request, response) => {
   })
 }
 
+const deleteTrip = (request, response) => {
+  const id = request.body.element.id
+  console.log(request.body.element.id)
+
+  pool.query('DELETE FROM turs WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      console.log(error)
+    }
+    response.redirect('/turs');
+  })
+}
+
 
 
 
 module.exports = {
-  getUsers,
+  getTrip,
   createTrip,
+  deleteTrip,
 }   
 
 app.get('/newTripForm',(req,res)=>{
@@ -99,7 +108,9 @@ app.post('/newTripForm',createTrip)
 
 
 
-app.get('/turs',getUsers);
+app.get('/turs',getTrip);
+
+app.delete('/turs',deleteTrip)
 
 
 
@@ -117,7 +128,6 @@ app.post('/', urlencodedParser, function (req, res) {
         
     });
     if (adults.length === 1) {
-        console.log(adults)
         res.render('planB', { country: adults[0].country , time: adults[0].time,});
     }else{
         console.log('Ошибка');
