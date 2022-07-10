@@ -78,10 +78,9 @@ const createTrip = (request, response) => {
 }
 
 const deleteTrip = (request, response) => {
-  const id = request.body.element.id
-  console.log(request.body.element.id)
-
-  pool.query('DELETE FROM turs WHERE id = $1', [id], (error, results) => {
+  const id = request.params.id
+  console.log(id)
+  pool.query('DELETE FROM turs WHERE id = $1', [`${id}`], (error, results) => {
     if (error) {
       console.log(error)
     }
@@ -91,12 +90,19 @@ const deleteTrip = (request, response) => {
 
 
 
-
 module.exports = {
   getTrip,
   createTrip,
   deleteTrip,
 }   
+
+
+app.get('/turs/:id',deleteTrip)
+
+// app.get('/turs/:id',(req,res)=>{
+//   res.render('/turs')
+// })
+
 
 app.get('/newTripForm',(req,res)=>{
   res.render('newTripForm');
@@ -110,7 +116,9 @@ app.post('/newTripForm',createTrip)
 
 app.get('/turs',getTrip);
 
-app.delete('/turs',deleteTrip)
+
+
+
 
 
 
